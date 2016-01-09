@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+
+  "name": "lessandmore",
+  "description": "Convert an article to show less of what you don't want and more of what you do.",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "https://ajax.googleapis.com/"
+  ]
+}
