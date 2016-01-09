@@ -12,7 +12,8 @@ def post_text():
     text = request.form['text']
     less = request.form['less'].split(' ')
     more = request.form['more'].split(' ')
-    return text
+    content = text
+    return render_template('converted.html', content=content)
 
 
 if __name__ == '__main__':
