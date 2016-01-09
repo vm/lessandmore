@@ -1,0 +1,41 @@
+* {
+  font-family: 'menlo';
+  color: #2C302F;
+}
+
+body {
+  margin: 50px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+textarea {
+  width: 600px;
+  height: 200px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+input[type=text] {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  width: 300px;
+  height: 20px;
+  padding: 1px;
+}
+
+input[type=submit] {
+  margin-top: 20px;
+  background: #ccc;
+  border: 0 none;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  height: 30px;
+  width: 100px;
+}
