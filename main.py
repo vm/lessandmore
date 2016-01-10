@@ -1,25 +1,20 @@
+import re
+
 from flask import Flask, request, render_template
 from readability import ParserClient
 
-from convert import convert
-
 app = Flask(__name__)
 
-TOKEN = ''
-parser = ParserClient(TOKEN)
+TOKEN = 'ee71317c7d5f30a39e53a83dd84a7646977e01c4'
+parser = ParserClient(token=TOKEN)
 
 @app.route('/')
-def enter_text():
-    return render_template('index.html')
-
-
-@app.route('/', methods=['POST'])
-def post_text():
-    link = request.form['article']
-    less_words = request.form['less'].split(' ')
-    more_words = request.form['more'].split(' ')
-    response = parser.get_article(link).json()
-    converted_content = convert(response['content'], less_words, more_words)
+def converted():
+    less = request.args.get('less', '').split(' ')
+    more = request.args.get('more', '').split(' ')
+    url = request.args.get('url', 'http://espn.go.com/chalk/story/_/id/14521633/daily-fantasy-mark-cuban-invests-dfs-analytics-company-fantasy-labs')
+    response = parser.get_article(url).json()
+    converted_content = re.sub('<[^<]+?>', '', response['content'])
     return render_template(
         'converted.html',
         title=response['title'],

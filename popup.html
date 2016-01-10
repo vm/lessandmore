@@ -3,16 +3,17 @@
   <head>
     <title>lessandmore</title>
     <link rel=stylesheet type=text/css href='static/style.css'>
+    <script type="text/javascript" src="popup.js"></script>
   </head>
   <body>
     <h1>lessandmore</h1>
-    <form action="." method="POST">
+    <form method="POST">
       <h2>I wish this article had less...</h2>
-      <input type="text" name="less">
+      <input type="text" id="less">
       <h2>and more...</h2>
-      <input type="text" name="more">
+      <input type="text" id="more">
       <br>
-      <input type="submit" name="text" value="convert">
+      <input type="submit" id="submit">
     </form>
   </body>
 </html>
