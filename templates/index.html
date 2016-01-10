@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>lessandmore</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <h1>lessandmore</h1>
+    <form action="." method="POST">
+      <h2>I really like this post...</h2>
+      <input type="text" name="text">
+      <h2>but I wish it had less...</h2>
+      <input type="text" name="less">
+      <h2>and more...</h2>
+      <input type="text" name="more">
+      <br>
+      <input type="submit" name="text" value="convert">
+    </form>
+  </body>
+</html>

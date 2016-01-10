@@ -7,37 +7,33 @@ import requests
 app = Flask(__name__)
 
 @app.route('/')
+def enter_text():
+    return render_template('index.html')
+
+
+@app.route('/', methods=['POST'])
 def converted():
-    less = request.args.get('less', '').split(' ')
-    more = request.args.get('more', '').split(' ')
-    url = request.args.get('url', 'http://espn.go.com/chalk/story/_/id/14521633/daily-fantasy-mark-cuban-invests-dfs-analytics-company-fantasy-labs')
+    less = request.form.get('less', '').split(' ')
+    more = request.form.get('more', '').split(' ')
+    url = request.form.get('url', 'http://www.nytimes.com/2016/01/10/world/americas/el-chapo-mexican-drug-lord-interview-with-sean-penn.html?hp&action=click&pgtype=Homepage&clickSource=story-heading&module=a-lede-package-region&region=top-news&WT.nav=top-news')
 
-    body = BeautifulSoup(requests.get(url).text).find('body').get_text()
-    print body
-    return replace_body(body)
+    soup = BeautifulSoup(requests.get(url).text)
+
+    for script in soup(['script', 'style']):
+        script.extract()
+    text = soup.get_text()
+
+    replacers = [convert(x.strip()) for x in re.split('Mr. |\.|\n|,', text) if x]
+    print replacers[:100]
+
+    fixed = unicode(soup)
+    for text, new_text in replacers:
+        fixed = fixed.replace(text, new_text)
+    return fixed
 
 
-def convert_body(texts):
-    return texts
-
-
-def replace_body(original):
-    tags = []
-    texts = []
-    for each in original.split('<')[1:]:
-        tag, text = tuple(each.split('>'))
-        tags.append(tag)
-        texts.append(text)
-
-    converted_texts = convert_body(texts)
-
-    string_builder = []
-    for tag, text in zip(tags, converted_texts):
-        string_builder.append('<{}>'.format(tag))
-        string_builder.append(text)
-
-    print ''.join(string_builder)
-
+def convert(text):
+    return text, text.upper()
 
 if __name__ == '__main__':
     app.run(debug=True)
