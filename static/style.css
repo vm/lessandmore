@@ -1,5 +1,5 @@
 * {
-  font-family: 'input sans';
+  font-family: 'input sans', 'menlo', monospace;
   color: #2C302F;
   font-weight: normal;
 }
@@ -19,14 +19,6 @@ h2 {
   font-size: 18px;
 }
 
-textarea {
-  width: 600px;
-  height: 200px;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  padding: 5px;
-}
-
 input[type=text] {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -35,10 +27,6 @@ input[type=text] {
   width: 300px;
   height: 20px;
   padding: 1px;
-}
-
-input[type=text]:focus {
-  border-color: #red;
 }
 
 input[type=submit] {
@@ -50,12 +38,4 @@ input[type=submit] {
   border-radius: 5px;
   height: 30px;
   width: 100px;
-}
-
-.converted {
-  line-height: 170%;
-  font-family: 'Source Serif Pro';
-  font-size: 18px;
-  padding-left: 100px;
-  padding-right: 100px;
 }
